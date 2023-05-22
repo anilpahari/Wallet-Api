@@ -1,0 +1,12 @@
+const express = require("express");
+const userRegister = require("./controllers/userRegister");
+const userLogin = require("./controllers/userLogin");
+//const auths = require("../../middleware/auth");
+const userDashbord = require("./controllers/userDashboard");
+const auth = require("../../middleware/auth");
+const userRoute = express.Router();
+userRoute.post("/register", userRegister);
+userRoute.post("/login", userLogin);
+userRoute.use(auth);
+userRoute.get("/dashboard", userDashbord);
+module.exports = userRoute;
